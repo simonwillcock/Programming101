@@ -1,6 +1,5 @@
 # Calculate the prime factors of the given number
 
-n = int(raw_input("Enter a number to calculate it's prime factors: "))
 
 def isPrime(n):
 	# Check if given number is a prime
@@ -11,13 +10,19 @@ def isPrime(n):
 			break
 	return is_prime
 
-def getFactors(n,factors = []):
+def getPrimeFactors(n,factors = []):
 	for i in range(2,n):
-		if n % i == 0:
-			if isPrime(i) == True:
+		if isPrime(i) == True:
+			if n % i == 0:
 				factors.append(i)
-			else:
-				getFactors(i)
+				if isPrime(n/i) != True:
+					getPrimeFactors(n/i)
+					break
 	return factors
 
-print getFactors(n)
+if __name__ == "__main__":
+	n = int(raw_input("Enter a number to calculate it's prime factors: "))
+	if isPrime(n) == True:
+		print(n)
+	else:
+		print(getPrimeFactors(n))
