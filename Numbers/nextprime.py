@@ -14,8 +14,9 @@ def getNextPrime(n):
 			return n
 
 while cont == True:
-	print(getNextPrime(currPrime))
-	
+
+	currPrime = getNextPrime(currPrime)
+	print currPrime
 	currPrime += 1
 
 	user_cont = raw_input("Find next Prime number (y/n): ")
