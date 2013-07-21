@@ -35,11 +35,19 @@ def getPostStats(username):
 		return stats
 
 def main():
-	# print(json.dumps(getUserData("superted125"),indent=2))
-	# print(json.dumps(getMostRecentPost('superted125'),indent=2))
-	# print(getPostStats(getMostRecentPost('superted125')))
-	print(getPostStats('superted125'))
-	print(getPostStats('superted1256'))
+	user1 = 'superted125'
+	user2 = 'Kale21'
+	u1Stats = getPostStats(user1)
+	u2Stats = getPostStats(user2)
+	u1Karma = u1Stats['upvotes'] - u1Stats['downvotes']
+	u2Karma = u2Stats['upvotes'] - u2Stats['downvotes']
+	if u2Karma > u1Karma:
+		print("%s's most recent post had %d more karma than %s's" % (user2,(u2Karma - u1Karma),user1))
+	elif u1Karma > u2Karma:
+		print("%s's most recent post had %d more karma than %s's" % (user1,(u1Karma - u2Karma),user2))
+	else:
+		print("Both posts were equal!")
+
 
 if __name__ == '__main__':
 	main()
